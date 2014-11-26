@@ -2,6 +2,8 @@
 
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
+#include "FlowField.h"
+
 
 using namespace ci;
 using namespace ci::app;
@@ -41,21 +43,61 @@ public:
 
 	void applyForce(Vec2d force)
 	{
-		acceleration += force;
-		console()<<"acceleration::  "<<acceleration<<endl;
+		acceleration += force;		
 	}
 
 	void seek(Vec2d target)
 	{
 		Vec2d desired = target - location;
 		desired.normalize();
-		
+
 		desired *= maxSpeed;		
 		Vec2d steer  = desired - velocity;
-		
+
 		steer.limit(maxForce);// = clamp(steer, maxForce);
 		applyForce(steer);
 	}
+
+	void arrive(Vec2d target)
+	{
+		Vec2d desired = target - location;		
+
+		float d = desired.length();
+		desired.normalize();
+
+		if (d < 100)
+		{ 
+			float m = map(d, 0, 100, 0, maxSpeed);
+			desired *= m;
+		} 
+		else 
+		{
+			desired *= maxSpeed;
+		}
+
+		Vec2d steer  = desired - velocity;		
+		steer.limit(maxForce);
+		applyForce(steer);
+	}
+
+	void follow(FlowField flow)
+	{
+		Vec2d desired = flow.lookup(location);
+		desired *= maxSpeed;
+		Vec2d steer  = desired - velocity;
+		steer.limit(maxForce);
+		applyForce(steer);
+	}
+
+
+		float map(float value, 
+		float istart, 
+		float istop, 
+		float ostart, 
+		float ostop) {
+			return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+	}
+
 
 private:
 	Vec2d location;
