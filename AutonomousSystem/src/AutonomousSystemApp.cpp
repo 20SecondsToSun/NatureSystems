@@ -14,6 +14,7 @@ class AutonomousSystemApp : public AppNative {
 
 	void setup();
 	void mouseDown( MouseEvent event );	
+
 	void update();
 	void draw();
 
@@ -32,7 +33,7 @@ class AutonomousSystemApp : public AppNative {
 
 void AutonomousSystemApp::setup()
 {
-	vec = new Vehicle(50, 50);
+	vec = new Vehicle(200, 200);
 	flowField = new FlowField(20);
 	
 }
@@ -59,7 +60,9 @@ void AutonomousSystemApp::draw()
 {
 	// clear out the window with black
 	gl::clear( Color( 0, 0, 0 ) ); 
+	flowField->drawVectorField();
 	vec->draw();
+
 }
 
 void AutonomousSystemApp::shutdown()
