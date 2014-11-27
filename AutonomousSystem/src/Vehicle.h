@@ -3,7 +3,7 @@
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
 #include "FlowField.h"
-
+#include "cinder/Rand.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -89,8 +89,18 @@ public:
 		applyForce(steer);
 	}
 
+	void stayAtBounds(Rectf rect)
+	{
+		if(!rect.contains(location))
+		{
+			location = randVec2f();
+			location.x *= rect.getWidth();
+			location.y *= rect.getHeight();
+		}
+	}
 
-		float map(float value, 
+
+	float map(float value, 
 		float istart, 
 		float istop, 
 		float ostart, 

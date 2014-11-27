@@ -18,15 +18,17 @@ public:
 	{
 		resolution = _resolution;
 
-		cols = getWindowWidth() / _resolution;
-		rows = getWindowHeight() / _resolution;
+		rows = getWindowWidth() / _resolution;
+		cols = getWindowHeight() / _resolution;
+
+		vecLen = _resolution;
 
 		// allocation
 		fieldArr = new Vec2d*[rows];
 		for(int i = 0; i < rows; i++)
 			fieldArr[i] = new Vec2d[cols];
 
-		
+		console()<<"vecLen  "<<"  "<<vecLen<<endl;
 		init();
 	}
 
@@ -69,6 +71,8 @@ private:
 	int resolution;
 	int cols, rows;
 
+	float vecLen;
+
 	vector<Vec2d> field;
 	Vec2d **fieldArr;
 	Perlin mPerlin;
@@ -80,15 +84,15 @@ private:
 
 	void drawGrid()
 	{
-		gl::lineWidth(0.01f);
+		glLineWidth(0.5f);
 
-		for (int i = 0; i < rows; i++) 
+		for (int i = 0; i < cols; i++) 
 		{
 			float yPos = i * resolution;
 			gl::drawLine(Vec2f(0.0f, yPos), Vec2f(getWindowWidth(), yPos));
 		}
 
-		for (int i = 0; i < cols; i++) 
+		for (int i = 0; i < rows; i++) 
 		{
 			float xPos = i * resolution;
 			gl::drawLine(Vec2f(xPos, 0.0f), Vec2f(xPos, getWindowHeight()));
@@ -97,11 +101,25 @@ private:
 
 	void drawVectors()
 	{
+		float headLength = 6.0f;
+		float headRadius = 3.0f;
+		float _vecLen = vecLen - headLength;
+		 Vec3f p1( 0.0f, 0.0f, 0.0f );
+
 		for (int i = 0; i < rows; i++) 
 		{			
 			for (int j = 0; j <cols; j++) 
-			{
-				//fieldArr[i][j]
+			{		
+				 Vec2d vec = fieldArr[i][j];
+				 float startX = (float)(i)*resolution;
+				 float startY = (float)(j)*resolution;				
+				 Vec3f p2( (float)vec.x*_vecLen, (float)vec.y*_vecLen, 0.0f );
+				
+				 gl::pushMatrices();
+				 gl::translate(resolution*0.5 - vec.x*_vecLen*0.5, resolution*0.5 - vec.y*_vecLen*0.5);
+				  gl::translate(startX, startY);
+				 gl::drawVector( p1, p2, headLength, headRadius );
+				 gl::popMatrices();
 			}
 		}
 	}

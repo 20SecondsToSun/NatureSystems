@@ -54,6 +54,7 @@ void AutonomousSystemApp::update()
 	vec->follow(*flowField);
 
 	vec->update();
+	vec->stayAtBounds(getWindowBounds());
 }
 
 void AutonomousSystemApp::draw()
