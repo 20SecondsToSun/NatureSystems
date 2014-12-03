@@ -2,15 +2,15 @@
 #include "cinder/gl/gl.h"
 #include "Vehicle.h"
 #include "FlowField.h"
-#include <thread>
-typedef std::shared_ptr<std::thread> ThreadRef;
+#include "Path.h"
+
 using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class AutonomousSystemApp : public AppNative {
+class AutonomousSystemApp : public AppNative
+{
   public:
-	
 
 	void setup();
 	void mouseDown( MouseEvent event );	
@@ -18,24 +18,21 @@ class AutonomousSystemApp : public AppNative {
 	void update();
 	void draw();
 
-
 	Vehicle*  vec;
-
 	void run( );
 	void shutdown();
-	ThreadRef							mThread;
-	bool mRunning ;
-	int i;
+
 
 	Vec2d point;
 	FlowField *flowField;
+	Path *path;
 };
 
 void AutonomousSystemApp::setup()
 {
-	vec = new Vehicle(200, 200);
-	flowField = new FlowField(20);
-	
+	vec = new Vehicle(200, 100);
+	//flowField = new FlowField(20);
+	path = new Path();
 }
 
 void AutonomousSystemApp::run( )
@@ -51,17 +48,19 @@ void AutonomousSystemApp::mouseDown( MouseEvent event )
 void AutonomousSystemApp::update()
 {
 	//vec->arrive(point);
-	vec->follow(*flowField);
-
+	//vec->follow(*flowField);
+	
+	vec->follow(*path);
 	vec->update();
-	vec->stayAtBounds(getWindowBounds());
+	//vec->stayAtBounds(getWindowBounds());
 }
 
 void AutonomousSystemApp::draw()
 {
 	// clear out the window with black
 	gl::clear( Color( 0, 0, 0 ) ); 
-	flowField->drawVectorField();
+	//flowField->drawVectorField();
+	path->draw();
 	vec->draw();
 
 }

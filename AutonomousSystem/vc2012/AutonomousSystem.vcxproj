@@ -112,11 +112,12 @@
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h" />
     <ClInclude Include="..\src\FlowField.h" />
+    <ClInclude Include="..\src\Path.h" />
     <ClInclude Include="..\src\Vehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
- <PropertyGroup>
- <TrackFileAccess>false</TrackFileAccess>
- </PropertyGroup>
+  <PropertyGroup>
+    <TrackFileAccess>false</TrackFileAccess>
+  </PropertyGroup>
 </Project>

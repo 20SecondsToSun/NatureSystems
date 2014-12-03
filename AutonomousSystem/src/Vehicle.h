@@ -4,6 +4,7 @@
 #include "cinder/gl/gl.h"
 #include "FlowField.h"
 #include "cinder/Rand.h"
+#include "Path.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -19,7 +20,7 @@ public:
 
 	{
 		location = Vec2d(x, y);
-
+		velocity = Vec2d(1,1);
 		maxSpeed = 10;//Vec2d(40, 40);
 		maxForce = 0.3;// Vec2d(0.5, 0.5);
 	};
@@ -89,6 +90,29 @@ public:
 		applyForce(steer);
 	}
 
+	void follow(Path path)
+	{
+		Vec2d predictVel = velocity;
+		predictVel.normalize();
+		predictVel *= 10;
+		Vec2d predictLoc = location + predictVel;
+		Vec2d a = path.getStart();
+		Vec2d b = path.getEnd();
+		Vec2d normalPoint = getNormalPoint(predictLoc, a, b );
+
+		Vec2d dir = b - a;
+		dir.normalize();
+		dir *= 5;
+
+		Vec2d target = normalPoint + dir;
+
+		float distance = normalPoint.distance(predictLoc);
+
+		if(distance > path.getRadius())
+			seek(target);
+
+	}
+
 	void stayAtBounds(Rectf rect)
 	{
 		if(!rect.contains(location))
@@ -106,6 +130,17 @@ public:
 		float ostart, 
 		float ostop) {
 			return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+	}
+
+	Vec2d getNormalPoint(Vec2d p, Vec2d a, Vec2d b) 
+	{
+		Vec2d ap = p - a; 
+		Vec2d ab = b - a;
+
+		ab.normalize();
+		ab *= ap.dot(ab);		
+		
+		return a + ab;
 	}
 
 
