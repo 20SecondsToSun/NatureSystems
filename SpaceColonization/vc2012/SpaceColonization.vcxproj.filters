@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="Source Files\generative">
+      <UniqueIdentifier>{77cf0159-1902-4652-bc0a-ecee509e72d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\SpaceColonizationApp.cpp">
@@ -24,16 +27,40 @@
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClCompile Include="..\src\generative\Branch.cpp">
+      <Filter>Source Files\generative</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\generative\Leaf.cpp">
+      <Filter>Source Files\generative</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\generative\Tree2D.cpp">
+      <Filter>Source Files\generative</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\generative\Tree3D.cpp">
+      <Filter>Source Files\generative</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\generative\ITree.cpp">
+      <Filter>Source Files\generative</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Tree.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="..\src\generative\Branch.h">
+      <Filter>Source Files\generative</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Tree3d.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="..\src\generative\ITree.h">
+      <Filter>Source Files\generative</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\generative\Leaf.h">
+      <Filter>Source Files\generative</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\generative\Tree2D.h">
+      <Filter>Source Files\generative</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\generative\Tree3D.h">
+      <Filter>Source Files\generative</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

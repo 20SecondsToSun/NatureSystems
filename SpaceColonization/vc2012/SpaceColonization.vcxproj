@@ -76,7 +76,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;"..\..\..\..\\include";"..\..\..\..\\boost"</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\..\\include;..\..\..\..\\boost;..\src\generative</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -107,12 +107,20 @@
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\generative\Branch.cpp" />
+    <ClCompile Include="..\src\generative\ITree.cpp" />
+    <ClCompile Include="..\src\generative\Leaf.cpp" />
+    <ClCompile Include="..\src\generative\Tree2D.cpp" />
+    <ClCompile Include="..\src\generative\Tree3D.cpp" />
     <ClCompile Include="..\src\SpaceColonizationApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h" />
-    <ClInclude Include="..\src\Tree.h" />
-    <ClInclude Include="..\src\Tree3d.h" />
+    <ClInclude Include="..\src\generative\Branch.h" />
+    <ClInclude Include="..\src\generative\ITree.h" />
+    <ClInclude Include="..\src\generative\Leaf.h" />
+    <ClInclude Include="..\src\generative\Tree2D.h" />
+    <ClInclude Include="..\src\generative\Tree3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
