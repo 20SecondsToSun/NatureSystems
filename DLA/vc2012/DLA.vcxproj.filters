@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\SpaceColonizationApp.cpp">
+    <ClCompile Include="..\src\DLAApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\SpaceColonizationApp.cpp">
+    <ClCompile Include="..\src\DLAApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClInclude Include="..\include\Resources.h">
@@ -29,10 +29,7 @@
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Tree.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Tree3d.h">
+    <ClInclude Include="..\include\DLA.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

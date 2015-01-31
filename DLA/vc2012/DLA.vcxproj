@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{DADE48D9-184D-438A-8871-2CBFC0EE7374}</ProjectGuid>
-    <RootNamespace>SpaceColonization</RootNamespace>
+    <ProjectGuid>{6E82C29A-BF37-41A6-BB48-E996DF85A1E4}</ProjectGuid>
+    <RootNamespace>DLA</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -107,12 +107,11 @@
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\SpaceColonizationApp.cpp" />
+    <ClCompile Include="..\src\DLAApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\DLA.h" />
     <ClInclude Include="..\include\Resources.h" />
-    <ClInclude Include="..\src\Tree.h" />
-    <ClInclude Include="..\src\Tree3d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
