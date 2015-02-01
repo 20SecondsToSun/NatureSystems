@@ -76,7 +76,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;..\..\..\..\\include;..\..\..\..\\boost;..\src\generative</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\..\\include;..\..\..\..\\boost;..\src\generative;..\src\mesh</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -112,6 +112,7 @@
     <ClCompile Include="..\src\generative\Leaf.cpp" />
     <ClCompile Include="..\src\generative\Tree2D.cpp" />
     <ClCompile Include="..\src\generative\Tree3D.cpp" />
+    <ClCompile Include="..\src\mesh\MeshHelper.cpp" />
     <ClCompile Include="..\src\SpaceColonizationApp.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +122,7 @@
     <ClInclude Include="..\src\generative\Leaf.h" />
     <ClInclude Include="..\src\generative\Tree2D.h" />
     <ClInclude Include="..\src\generative\Tree3D.h" />
+    <ClInclude Include="..\src\mesh\MeshHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

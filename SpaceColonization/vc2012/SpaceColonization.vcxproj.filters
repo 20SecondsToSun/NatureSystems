@@ -16,6 +16,9 @@
     <Filter Include="Source Files\generative">
       <UniqueIdentifier>{77cf0159-1902-4652-bc0a-ecee509e72d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\mesh">
+      <UniqueIdentifier>{65d159b7-0bf7-413a-8625-2da4a6dfae1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\SpaceColonizationApp.cpp">
@@ -42,6 +45,9 @@
     <ClCompile Include="..\src\generative\ITree.cpp">
       <Filter>Source Files\generative</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\mesh\MeshHelper.cpp">
+      <Filter>Source Files\mesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
@@ -61,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="..\src\generative\Tree3D.h">
       <Filter>Source Files\generative</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mesh\MeshHelper.h">
+      <Filter>Source Files\mesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

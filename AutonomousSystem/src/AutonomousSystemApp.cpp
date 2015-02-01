@@ -31,7 +31,7 @@ class AutonomousSystemApp : public AppNative
 void AutonomousSystemApp::setup()
 {
 	vec = new Vehicle(200, 100);
-	//flowField = new FlowField(20);
+	flowField = new FlowField(20);
 	path = new Path();
 }
 
@@ -47,20 +47,20 @@ void AutonomousSystemApp::mouseDown( MouseEvent event )
 
 void AutonomousSystemApp::update()
 {
-	//vec->arrive(point);
-	//vec->follow(*flowField);
+	vec->arrive(point);
+	vec->follow(*flowField);
 	
 	vec->follow(*path);
 	vec->update();
-	//vec->stayAtBounds(getWindowBounds());
+	vec->stayAtBounds(getWindowBounds());
 }
 
 void AutonomousSystemApp::draw()
 {
 	// clear out the window with black
 	gl::clear( Color( 0, 0, 0 ) ); 
-	//flowField->drawVectorField();
-	path->draw();
+	flowField->drawVectorField();
+	//path->draw();
 	vec->draw();
 
 }
